@@ -1,4 +1,5 @@
 module.exports = {
+  'sourceType': 'unambiguous',
   'passPerPreset': false,
   'presets': [
     [
@@ -40,6 +41,9 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties', { 'loose': false }],
     '@babel/plugin-proposal-json-strings',
     'emotion'
+  ],
+  'ignore': [
+    'node_modules'
   ],
   'env': {
     'test': {

@@ -3,7 +3,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d",
-    "start": "webpack-dev-server -d --hot"
+    "start": "webpack-dev-server -d --hot --open"
   },
   "jest": {
     "setupFiles": [
@@ -45,6 +45,7 @@
     "apollo-link-http": "1.5.14",
     "apollo-link-state": "0.4.2",
     "axios": "0.19.0",
+    "dotenv": "^8.2.0",
     "emotion-theming": "10.0.10",
     "graphql": "14.3.1",
     "graphql-tag": "^2.10.1",
@@ -137,6 +138,6 @@
     "webpack-dev-server": "3.7.1"
   },
   "engines": {
-    "node": ">=11.15.0 <12.0.0"
+    "node": ">=11.15.0 <=12.16.2"
   }
 }
