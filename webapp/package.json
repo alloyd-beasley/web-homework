@@ -138,6 +138,6 @@
     "webpack-dev-server": "3.7.1"
   },
   "engines": {
-    "node": ">=11.15.0 <=12.16.2"
+    "node": ">=11.15.0 <=node -v"
   }
 }

@@ -1,5 +1,5 @@
 const graphql = require('graphql')
-const TransactionType = require('./transaction-type')
+const {TransactionType} = require('./transaction-type')
 const Transactions = require('../query-resolvers/transaction-resolvers.js')
 
 const {

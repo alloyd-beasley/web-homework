@@ -9,7 +9,7 @@ const {
 
 const UserSchema = require(path.join('..', 'data-models', 'User')) // eslint-disable-line no-unused-vars
 const { TransactionModel: Transaction } = require(path.join('..', 'data-models', 'Transaction'))
-const TransactionType = require('./transaction-type')
+const { TransactionType } = require('./transaction-type')
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -20,7 +20,7 @@ const UserType = new GraphQLObjectType({
     lastName: { type: GraphQLString },
     transactions: {
       type: new GraphQLList(TransactionType),
-      resolve (parentValue, args) {
+      resolve(parentValue, args) {
         return Transaction.find({ user_id: args.id }).populate('transaction')
       }
     }
