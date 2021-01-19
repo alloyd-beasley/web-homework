@@ -1,0 +1,16 @@
+1/16/2021
+    - need to define MVP
+        - work towards first most basic UI objective.
+        - adding first transaction from the UI.
+        - UI structure needs to be fleshed out, explorative first?
+    - work on bulk transactions can resume after basic adding from UI?
+    
+1/18/2021
+    - focused on Table component and styling
+    - reorganized app structure: created component directory, moved existing home component there, created common subdirectory of components
+    - For MVP next steps:
+        - add table row actions for edit/update/delete transactions. 
+        - add footer action to add tx. 
+        - consider next steps for adding bulk tx. 
+        - consider next steps for next most achievable objective
+        - TESTS

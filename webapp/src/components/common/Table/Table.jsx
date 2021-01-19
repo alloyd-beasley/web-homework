@@ -4,6 +4,7 @@ import { TableHeaderRow, TableWrapper, TableHeaderCell, TableDataCell, TableData
 
 const Table = (props) => {
     const { headers, data } = props;
+    
     return (
         <TableWrapper>
             <TableBody align="left">
