@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { css } from '@emotion/core'
-import { Home } from './home'
+import { Home } from './components/home/home-page'
 
 function AppRouter () {
   return (
