@@ -7,35 +7,31 @@ import {
     TableDataCell,
     TableDataRow,
     TableBody,
-    TableHeaderWrapper,    
-    tableContainer
+    TableHeaderWrapper,
 } from "./TableStyles"
+
+import { buttonStyle } from "../../../styles/AppStyles"
 
 const Table = (props) => {
     const { headers, data } = props;
 
     return (
-        <div css={tableContainer}>
-            <TableWrapper>
-                <TableHeaderWrapper>
-                    <TableHeaderRow>
-                        {headers.map((h, i) => <TableHeaderCell key={`header-cell-${i}`}>{h}</TableHeaderCell>)}
-                    </TableHeaderRow>
-                </TableHeaderWrapper>
-                <TableBody align="left">
-                    {data.map((d, i) => {
-                        return (
-                            <TableDataRow key={`data-row-${i}`}>
-                                {headers.map(h => <TableDataCell key={`${h}-cell-${i}`}>{d[h]}</TableDataCell>)}
-                            </TableDataRow>
-                        );
-                    })}
-                </TableBody>
-            </TableWrapper>
-            <button>
-                Add Transaction
-            </button>
-        </div>
+        <TableWrapper>
+            <TableHeaderWrapper>
+                <TableHeaderRow>
+                    {headers.map((h, i) => <TableHeaderCell key={`header-cell-${i}`}>{h}</TableHeaderCell>)}
+                </TableHeaderRow>
+            </TableHeaderWrapper>
+            <TableBody align="left">
+                {data.map((d, i) => {
+                    return (
+                        <TableDataRow key={`data-row-${i}`}>
+                            {headers.map(h => <TableDataCell key={`${h}-cell-${i}`}>{d[h]}</TableDataCell>)}
+                        </TableDataRow>
+                    );
+                })}
+            </TableBody>
+        </TableWrapper>
     );
 }
 

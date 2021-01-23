@@ -3,37 +3,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d",
-    "start": "webpack-dev-server -d --hot --open"
-  },
-  "jest": {
-    "setupFiles": [
-      "../../testSetup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "../../jest.config.framework.js"
-    ],
-    "globals": {
-      "__DivvyEnvironment": true
-    },
-    "testRegex": "(/__tests__/.*?(\\.|/)(tests?|spec))\\.jsx?$",
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/assetMock.js"
-    },
-    "snapshotSerializers": [
-      "jest-emotion/serializer"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json"
-    ],
-    "transform": {
-      "\\.(gql|graphql)$": "jest-transform-graphql",
-      ".jsx?$": "babel-jest"
-    }
+    "start": "webpack-dev-server -d --hot --open",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/core": "10.0.10",
@@ -120,10 +91,12 @@
     "jest": "24.8.0",
     "jest-chain": "1.1.2",
     "jest-dom": "3.5.0",
+    "jest-emotion": "^11.0.0",
     "jest-expect-message": "1.0.2",
     "jest-fetch-mock": "2.1.2",
     "jest-json-schema": "2.0.2",
     "jest-runner-eslint": "0.7.4",
+    "jest-transform-graphql": "^2.1.0",
     "jsdom": "15.1.1",
     "prettier": "1.18.2",
     "prettier-eslint-cli": "4.7.1",
