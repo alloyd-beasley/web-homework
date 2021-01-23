@@ -11,7 +11,7 @@ function AppRouter() {
         <Nav />
         <div className='main-content' css={contentStyle}>
           <Route component={Home} exact path='/' />
-          <Route component={() => (<div>Content for /another route</div>)} exact path='/another' />
+          <Route component={() => (<div>Content for /another route</div>)} exact path='/Insights' />
         </div>
       </div>
     </Router>

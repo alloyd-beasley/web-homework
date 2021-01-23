@@ -1,26 +1,30 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Table from '../common/Table/Table'
 import { tableContainer } from '../common/Table/TableStyles'
 import { buttonStyle } from '../../styles/AppStyles'
+import { useGetTransactions } from "../../hooks/useGetTransactions"
 
-
-const tableData = [{
-  test: "test",
-  foo: "foo",
-  bar: "bar"
-}, {
-  test: "test",
-  foo: "foo",
-  bar: "bar"
-}]
 
 const Home = () => {
+  const [tableData, setTableData] = useState([]);
+  const [headers, setTableHeaders] = useState([]);
+  const { data, loading, error } = useGetTransactions();
+
+
+  useEffect(() => {
+    if (data && data.transactions) {
+      const keys = [...Object.keys(data.transactions[0])];
+      setTableHeaders(keys.filter(k => k !== "__typename"));
+      setTableData(data.transactions);
+    }
+  }, [data])
 
 
   return (
     <Fragment>
+      {data == 'loading' && "loading"}
       <div css={tableContainer}>
-        <Table headers={["test", "foo", "bar"]} data={tableData} />
+        <Table headers={headers} data={tableData} />
         <div style={{ display: "flex", width: "100%", justifyContent: "flex-start" }}>
           <button css={buttonStyle}>
             Add Transaction

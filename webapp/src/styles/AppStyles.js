@@ -18,8 +18,7 @@ export const buttonStyle = css`
   padding: 8px;
   margin: 8px;
   border-radius: 3px;
-  cursor: pointer;  
-  // width: 80px;
+  cursor: pointer;    
 `
 
 export const buttonDropdownStyle = css`

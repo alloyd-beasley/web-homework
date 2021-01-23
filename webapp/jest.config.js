@@ -1,9 +1,9 @@
 module.exports = {
     setupFiles: [
-        "../test.setup.js"
+        "./test.setup.js"
     ],
     setupFilesAfterEnv: [
-        "../jest.config.framework.js"
+        "./jest.config.framework.js"
     ],
     globals: {
         "__DivvyEnvironment": true
@@ -16,7 +16,7 @@ module.exports = {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/assetMock.js"
     },
     snapshotSerializers: [
-        "jest-emotion/serializer"
+        "@emotion/jest/serializer"
     ],
     moduleFileExtensions: [
         "js",

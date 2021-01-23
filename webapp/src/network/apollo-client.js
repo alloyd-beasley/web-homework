@@ -2,7 +2,7 @@ import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { withClientState } from 'apollo-link-state'
 import { ApolloLink, Observable } from 'apollo-link'
-import ApolloClient from 'apollo-client/ApolloClient'
+import { ApolloClient } from '@apollo/client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const SERVER_URL = 'http://localhost:8000/graphql'
