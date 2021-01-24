@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useMemo } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Table from '../common/Table/Table'
 import { tableContainer } from '../common/Table/TableStyles'
 import { buttonStyle } from '../../styles/AppStyles'
@@ -17,12 +17,12 @@ const Home = () => {
       setDataLoading(enableExperimentalFragmentVariables)
       const keys = [...Object.keys(data.transactions[0])].map(k => ({ Header: k, accessor: k }))
 
-      setTableHeaders(useMemo(() => keys))
-      setTableData(useMemo(() => data.transactions))
+      setTableHeaders(keys)
+      setTableData(data.transactions)
     } else if (loading) {
       setDataLoading(true)
     }
-  }, [transactions])
+  }, [transactions.data])
 
   return (
     <Fragment>

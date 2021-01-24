@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { useTable } from 'react-table'
+import { useTable, useResizeColumns, useFlexLayout } from 'react-table'
 
 import {
-  TableHeaderRow,
+  TableRow,
   TableWrapper,
   TableHeaderCell,
   TableDataCell,
-  TableDataRow,
   TableBody,
   TableHeaderWrapper
 } from './TableStyles'
@@ -15,19 +14,22 @@ import {
 const Table = (props) => {
   const { headers, data } = props
 
+  const columns = useMemo(() => headers)
+  const tableData = useMemo(() => data)
+
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow
-  } = useTable({ headers, data })
+  } = useTable({ columns, data: tableData }, useResizeColumns, useFlexLayout)
 
   return (
     <TableWrapper {...getTableProps()}>
       <TableHeaderWrapper>
         {headerGroups.map((hg, hgi) => (
-          <TableHeaderRow key={`header-row-${hgi}`}
+          <TableRow key={`header-row-${hgi}`}
             {...hg.getHeaderGroupProps()}>
             {hg.headers.map((col, i) => (
               <TableHeaderCell
@@ -37,7 +39,7 @@ const Table = (props) => {
                 {col.render('Header')}
               </TableHeaderCell>
             ))}
-          </TableHeaderRow>
+          </TableRow>
         ))}
       </TableHeaderWrapper>
       <TableBody {...getTableBodyProps()}>
@@ -45,8 +47,8 @@ const Table = (props) => {
           prepareRow(r)
 
           return (
-            <TableDataRow key={`data-row-${ri}`} {...r.getRowProps()}>
-              {rows.cells.map((c, ci) => (
+            <TableRow key={`data-row-${ri}`} {...r.getRowProps()}>
+              {r.cells.map((c, ci) => (
                 <TableDataCell
                   key={`${c}-cell-${ci}`}
                   {...c.getCellProps()}>
@@ -54,7 +56,7 @@ const Table = (props) => {
                 </TableDataCell>
               ))
               }
-            </TableDataRow>
+            </TableRow>
           )
         })}
       </TableBody>
