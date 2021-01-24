@@ -17,15 +17,15 @@ const mutation = new GraphQLObjectType({
         amount: { type: GraphQLFloat }
       },
       /* eslint-disable-next-line camelcase */
-      resolve: async (parentValue, { user_id, description, merchant_id, debit, credit, amount }) => {        
-        const tx = new TransactionModel({ user_id, description, merchant_id, debit, credit, amount });
-        const saved = await tx.save();
+      resolve: async (parentValue, { user_id, description, merchant_id, debit, credit, amount }) => {
+        const tx = new TransactionModel({ user_id, description, merchant_id, debit, credit, amount })
+        const saved = await tx.save()
 
-        tx.id = saved._id;
+        tx.id = saved._id
 
-        return tx;
+        return tx
       }
-    },
+    }
   }
 })
 
