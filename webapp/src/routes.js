@@ -1,10 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './components/Home/Home'
 import { contentStyle, layoutStyle } from './styles/AppStyles'
-import Nav from "./components/Nav/Nav"
+import Nav from './components/Nav/Nav'
 
-function AppRouter() {
+const AppRouter = () => {
   return (
     <Router>
       <div css={layoutStyle}>
@@ -18,11 +18,4 @@ function AppRouter() {
   )
 }
 
-
 export default AppRouter
-
-
-
-
-
-

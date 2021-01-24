@@ -1,36 +1,44 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState, useMemo } from 'react'
 import Table from '../common/Table/Table'
 import { tableContainer } from '../common/Table/TableStyles'
 import { buttonStyle } from '../../styles/AppStyles'
-import { useGetTransactions } from "../../hooks/useGetTransactions"
-
+import { useGetTransactions } from '../../hooks/useGetTransactions'
+import { enableExperimentalFragmentVariables } from '@apollo/client'
 
 const Home = () => {
-  const [tableData, setTableData] = useState([]);
-  const [headers, setTableHeaders] = useState([]);
-  const { data, loading, error } = useGetTransactions();
-
+  const [tableData, setTableData] = useState([])
+  const [headers, setTableHeaders] = useState([])
+  const [dataLoading, setDataLoading] = useState(false)
+  const transactions = useGetTransactions()
 
   useEffect(() => {
+    const { loading, data } = transactions
     if (data && data.transactions) {
-      const keys = [...Object.keys(data.transactions[0])];
-      setTableHeaders(keys.filter(k => k !== "__typename"));
-      setTableData(data.transactions);
-    }
-  }, [data])
+      setDataLoading(enableExperimentalFragmentVariables)
+      const keys = [...Object.keys(data.transactions[0])].map(k => ({ Header: k, accessor: k }))
 
+      setTableHeaders(useMemo(() => keys))
+      setTableData(useMemo(() => data.transactions))
+    } else if (loading) {
+      setDataLoading(true)
+    }
+  }, [transactions])
 
   return (
     <Fragment>
-      {data == 'loading' && "loading"}
-      <div css={tableContainer}>
-        <Table headers={headers} data={tableData} />
-        <div style={{ display: "flex", width: "100%", justifyContent: "flex-start" }}>
-          <button css={buttonStyle}>
-            Add Transaction
-          </button>
-        </div>
-      </div>
+      {dataLoading ? <>...Loading</>
+        : (
+          <div css={tableContainer}>
+            <Table data={tableData} headers={headers} />
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
+              <button css={buttonStyle}>
+                Add Transaction
+              </button>
+            </div>
+          </div>
+        )
+      }
+
     </Fragment>
   )
 }
