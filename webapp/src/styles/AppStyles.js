@@ -19,9 +19,20 @@ export const buttonStyle = css`
   margin: 8px;
   border-radius: 3px;
   cursor: pointer;
+  outline: none;
 `
+export const flatButtonStyle = css`
+    background: none;    
+    cursor: pointer;    
+    padding: 7px;
+    margin: 7px;
+    color: #FF7043;
+    border-radius: 3px;        
+    outline: none;
+    border: 1px solid rgba(255, 112, 67, 0);   
+    transition: border-color .45s ease;     
 
-export const buttonDropdownStyle = css`
-  background: #263238;
-  width: auto;
+    &:hover {         
+      border-color: rgba(255, 112, 67, 1);
+    }    
 `

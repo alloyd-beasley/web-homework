@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Table from '../common/Table/Table'
-import { tableContainer, TableFooter } from '../common/Table/TableStyles'
-import { buttonStyle } from '../../styles/AppStyles'
+import Footer from '../common/Table/Footer'
+import { tableContainer } from '../common/Table/TableStyles'
 import { useGetTransactions } from '../../hooks/useGetTransactions'
 import { enableExperimentalFragmentVariables } from '@apollo/client'
 
@@ -30,11 +30,7 @@ const Home = () => {
         : (
           <div css={tableContainer}>
             <Table data={tableData} headers={headers} />
-            <TableFooter>
-              <button css={buttonStyle}>
-                Add Transaction
-              </button>
-            </TableFooter>
+            <Footer />
           </div>
         )
       }

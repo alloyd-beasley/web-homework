@@ -67,6 +67,6 @@ export const TableDataCell = styled.td`
 export const TableFooter = styled.div`
     display: flex; 
     width: 100%; 
-    justifyContent: flex-start; 
+    justify-content: flex-start; 
     border-top: 1px solid rgba(255, 138, 101, 1);
 `
