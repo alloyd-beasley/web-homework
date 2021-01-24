@@ -20,6 +20,17 @@ export const TableBody = styled.tbody`
     overflow-y: scroll;
     overflow-x: hidden;
     height: 600px;
+    &::-webkit-scrollbar {
+        width: 12px;
+        background-color: #546E7A;
+        border-radius: 5px;
+        border: 1px solid #37474F
+      }
+    &::-webkit-scrollbar-thumb {        
+        background-color: #37474F;
+        border-radius: 5px;
+        border: 1px solid #546E7A
+    }
 `
 
 export const TableHeaderWrapper = styled.thead`
@@ -27,6 +38,7 @@ export const TableHeaderWrapper = styled.thead`
     text-align: left;
     overflow-y: auto;
     overflow-x: hidden;
+    border-bottom: 1px solid rgba(255, 138, 101, 1);
 `
 
 export const TableRow = styled.tr`
@@ -35,20 +47,26 @@ export const TableRow = styled.tr`
             border-bottom: 0;
         }
     }
-    border-bottom: 1px solid rgba(255, 138, 101, 0.3);
+    border-bottom: 1px solid rgba(255, 138, 101, 0.2);
 `
 export const TableHeaderCell = styled.th`
+    min-width: 50px;
     position: relative;
     margin: 0;    
     padding: 8px;
 `
 
 export const TableDataCell = styled.td`
-    position: relative    ;
+    min-width: 50px;
+    position: relative;
     padding: 8px;
     margin: 0;
+    word-wrap: break-word;
 `
 
-export const TableFooter = styled.tfoot`
-    height: 100px;
+export const TableFooter = styled.div`
+    display: flex; 
+    width: 100%; 
+    justifyContent: flex-start; 
+    border-top: 1px solid rgba(255, 138, 101, 1);
 `

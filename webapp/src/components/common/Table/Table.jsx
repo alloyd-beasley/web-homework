@@ -17,13 +17,19 @@ const Table = (props) => {
   const columns = useMemo(() => headers)
   const tableData = useMemo(() => data)
 
+  const defaultColumn = useMemo(() => ({
+    minwidth: 30,
+    width: 150,
+    maxWidth: 300
+  }))
+
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow
-  } = useTable({ columns, data: tableData }, useResizeColumns, useFlexLayout)
+  } = useTable({ columns, data: tableData, defaultColumn }, useResizeColumns, useFlexLayout)
 
   return (
     <TableWrapper {...getTableProps()}>
