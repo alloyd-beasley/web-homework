@@ -30,7 +30,7 @@ UploadSvg.defaultProps = {
 UploadSvg.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
-  fill: PropTypes.sting
+  fill: PropTypes.string
 }
 
 export default UploadSvg

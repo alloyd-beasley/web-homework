@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { TableFooter } from './TableStyles'
+import PropTypes from 'prop-types'
 import { buttonStyle, flatButtonStyle } from '../../../styles/AppStyles'
+import { TableFooter } from './TableStyles'
 import UploadSvg from '../UploadSvg.jsx'
 
-const Footer = () => {
+const Footer = ({ addTransaction }) => {
   const [displayActions, setDisplayActions] = useState(false)
 
   return (
@@ -24,6 +25,10 @@ const Footer = () => {
       )}
     </TableFooter>
   )
+}
+
+Footer.propTypes = {
+  addTransaction: PropTypes.func
 }
 
 export default Footer

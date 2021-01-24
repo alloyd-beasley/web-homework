@@ -1,41 +1,48 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Table from '../common/Table/Table'
 import Footer from '../common/Table/Footer'
+import { css } from '@emotion/core'
 import { tableContainer } from '../common/Table/TableStyles'
-import { useGetTransactions } from '../../hooks/useGetTransactions'
-import { enableExperimentalFragmentVariables } from '@apollo/client'
+import { TransactionContext } from '../../TransactionContext'
 
 const Home = () => {
-  const [tableData, setTableData] = useState([])
   const [headers, setTableHeaders] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
-  const transactions = useGetTransactions()
 
+  const { dataContext } = useContext(TransactionContext)
   useEffect(() => {
-    const { loading, data } = transactions
-    if (data && data.transactions) {
-      setDataLoading(enableExperimentalFragmentVariables)
-      const keys = [...Object.keys(data.transactions[0])].map(k => ({ Header: k, accessor: k }))
+    const { transactions } = dataContext
+    if (transactions.length > 0) {
+      const keys = [...Object.keys(transactions[0])].map(k => ({ Header: k, accessor: k }))
 
       setTableHeaders(keys)
-      setTableData(data.transactions)
-    } else if (loading) {
-      setDataLoading(true)
     }
-  }, [transactions.data])
+  }, [dataContext])
 
   return (
-    <Fragment>
-      {dataLoading ? <>...Loading</>
+    <div css={tableContainer}>
+      {dataContext.txDataLoading && (
+        <div css={css`
+            display: flex;
+            justify-content: center;
+            color: whitesmoke;
+            width: 100%;
+            line-height: 50px;
+        `}>...Loading Table Data</div>
+      )}
+      {dataContext.transactions.length > 0 && !dataContext.txDataLoading
+        ? <Table data={dataContext.transactions} headers={headers} />
         : (
-          <div css={tableContainer}>
-            <Table data={tableData} headers={headers} />
-            <Footer />
-          </div>
-        )
-      }
-
-    </Fragment>
+          <div css={css`
+            display: flex;
+            justify-content: center;
+            color: whitesmoke;
+            width: 100%;
+            line-height: 50px;
+        `}>
+          You have no transaction data to display. Please add a transaction.</div>
+        )}
+      <Footer />
+    </div>
   )
 }
 

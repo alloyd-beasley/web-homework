@@ -30,7 +30,7 @@ export const flatButtonStyle = css`
     border-radius: 3px;        
     outline: none;
     border: 1px solid rgba(255, 112, 67, 0);   
-    transition: border-color .45s ease;     
+    transition: border-color .45s ease;         
 
     &:hover {         
       border-color: rgba(255, 112, 67, 1);
