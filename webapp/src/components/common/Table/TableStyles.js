@@ -5,6 +5,7 @@ export const tableContainer = css`
     background: #37474F;
     box-shadow: 0px 0px 5px 1px #455a64;
     border-radius: 3px;
+    margin: 8px;
 `
 
 export const TableWrapper = styled.table`
@@ -13,12 +14,13 @@ export const TableWrapper = styled.table`
     border-collapse: collapse;
     width: 100%;
     color: whitesmoke;
+    overflow-x: auto;
 `
 
 export const TableBody = styled.tbody`
     display: block;
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: auto;
     height: 600px;
     &::-webkit-scrollbar {
         width: 12px;
