@@ -1,0 +1,20 @@
+user_id,amount,credit,debit,description,merchant_id
+test_user_1,12.5,TRUE,FALSE,test tx 1,merchant_1
+test_user_2,12.6,TRUE,FALSE,test tx 2,merchant_2
+test_user_3,12.7,TRUE,FALSE,test tx 3,merchant_3
+test_user_4,12.8,TRUE,FALSE,test tx 4,merchant_4
+test_user_5,12.9,TRUE,FALSE,test tx 5,merchant_5
+test_user_6,13,TRUE,FALSE,test tx 6,merchant_6
+test_user_7,13.1,FALSE,TRUE,test tx 7,merchant_7
+test_user_8,13.2,TRUE,FALSE,test tx 8,merchant_8
+test_user_9,13.3,TRUE,FALSE,test tx 9,merchant_9
+test_user_10,13.4,FALSE,TRUE,test tx 10,merchant_10
+test_user_11,13.5,TRUE,FALSE,test tx 11,merchant_11
+test_user_12,13.6,TRUE,FALSE,test tx 12,merchant_12
+test_user_13,13.7,FALSE,TRUE,test tx 13,merchant_13
+test_user_14,13.8,TRUE,FALSE,test tx 14,merchant_14
+test_user_15,13.9,TRUE,FALSE,test tx 15,merchant_15
+test_user_16,14,FALSE,TRUE,test tx 16,merchant_16
+test_user_17,14.1,TRUE,FALSE,test tx 17,merchant_17
+test_user_18,14.2,TRUE,FALSE,test tx 18,merchant_18
+test_user_19,14.3,FALSE,TRUE,test tx 19,merchant_19

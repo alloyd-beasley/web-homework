@@ -34,16 +34,7 @@ const Home = () => {
 
   return (
     <div css={tableContainer}>
-      {dataContext.txDataLoading && (
-        <div css={css`
-            display: flex;
-            justify-content: center;
-            color: whitesmoke;
-            width: 100%;
-            line-height: 50px;
-        `}>...Loading Table Data</div>
-      )}
-      {dataContext.transactions.length > 0 && !dataContext.txDataLoading
+      {dataContext.transactions.length > 0
         ? <Table data={dataContext.transactions} headers={headers} />
         : (
           <div css={css`
@@ -53,7 +44,7 @@ const Home = () => {
             width: 100%;
             line-height: 50px;
         `}>
-          You have no transaction data to display. Please add a transaction.</div>
+            {!dataContext.txDataLoading ? 'You have no transaction data to display. Please add a transaction.' : '...Loading Table Data'}</div>
         )}
       <Footer />
     </div>

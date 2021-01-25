@@ -5,6 +5,7 @@ import { TransactionContext } from './TransactionContext'
 import { useGetTransactions } from './hooks/useGetTransactions'
 import Home from './components/Home/Home'
 import Nav from './components/Nav/Nav'
+import Insights from './components/Insights/Insights'
 
 const AppRouter = () => {
   const [dataContext, setDataContext] = useState({ transactions: [], txDataLoading: false })
@@ -15,11 +16,11 @@ const AppRouter = () => {
   useEffect(() => {
     const { loading, data } = transactions
     if (data && data.transactions) {
-      setDataContext({ transactions: data.transactions, txDataLoading: false })
-    } else if (loading) {
-      setDataContext({ transactions: [], txDataLoading: true })
+      setDataContext({ transactions: data.transactions, txDataLoading: loading })
+    } else {
+      setDataContext({ transactions: [], txDataLoading: loading })
     }
-  }, [transactions.data])
+  }, [transactions.data, transactions.loading])
 
   return (
     <Router>
@@ -28,7 +29,7 @@ const AppRouter = () => {
         <div className='main-content' css={contentStyle}>
           <TransactionContext.Provider value={providerValue}>
             <Route component={Home} exact path='/' />
-            <Route component={() => (<div>Content for /another route</div>)} exact path='/Insights' />
+            <Route component={Insights} exact path='/Insights' />
           </TransactionContext.Provider>
         </div>
       </div>

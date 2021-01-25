@@ -1,27 +1,11 @@
-# Divvy Homework Assignment
+## To Get the Project Running
+ In any order, from the root web-homework directory:
+    -cd into webapp and follow the startup instructions.
+    -cd into webserver and follow the startup instructions.
 
-This repository provides a starting point for a basic React + GraphQL application.
-All of the configuration boilerplate is complete so you can start by writing the code that you want us to see.
+**Node** In both webapp and webserver, the node version for the engines property in package.json has been updated to accept versions up to and including **14.15.4**.
 
-Please **fork** this repo to your GitHub account.
-
-
-## Project Setup
-
-This repository is split into a web app directory (eg `/webapp`) and two server directories (eg `/webserver` and `/elixir`).
-
-The `/webserver` one includes a functional GraphQL server in NodeJS with MongoDB backing it.
-
-The `/elixir` one includes a functional GraphQL server in Elixir with Postgresql backing it.
-
-If you are applying for backend, you should use the elixir code.
-If you are applying for frontend, feel free to use either.
-
-This project is intentionally not utilizing 3rd party services or create-react-app to give you the opportunity to showcase your talents wherever they are, be it the front end or the back end.
-
-**Node** version **12** is the safest NodeJS release to use.  You can try version 14, but there can be node-gyp/python issues on OSX.
-
-## Instructions
+# Instructions
 
 See the [frontend instructions](frontend.md) for frontend focused instructions.
 
