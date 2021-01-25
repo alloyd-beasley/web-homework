@@ -1,8 +1,3 @@
-# Divvy React App
-
-Here is the completed boilerplate for a basic React application, with [Babel](https://babeljs.io/), [eslint](https://eslint.org/), [React](https://reactjs.org/), [React Router](https://github.com/ReactTraining/react-router), [Apollo Client (GraphQL)](https://www.apollographql.com/), and [emotion-js](https://github.com/emotion-js/emotion) already configured.  Please fork this project when submitting your homework assignment.
-
-
 ## Setup
 
     yarn
@@ -13,9 +8,7 @@ Here is the completed boilerplate for a basic React application, with [Babel](ht
     yarn start
 
 
-A webpack dev server is already configured, with hot reloading.  You should have everything you need to get started at this point.
+A webpack dev server is configured with hot reloading. A tab in your browsers should open and render the app.
 
-
-## What to do
-
-Please refer to the main [README](../README.md) in the root of this project.
+**.env** For custom environment variables, add a **.env ** file to the root of the project (web-homework).
+    - webpack dev server host and port values can be taken from the .env file to override defaults.
