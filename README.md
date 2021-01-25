@@ -6,10 +6,10 @@
 #### Node 
 In both webapp and webserver, the node version for the engines property in package.json has been updated to accept versions up to and including **14.15.4**.
 
-# Instructions
+# Startup Instructions
 
-See the [frontend instructions](frontend.md) for frontend focused instructions.
+See the [frontend instructions](./webapp/README.md) for frontend focused instructions.
 
-See the [backend instructions](backend.md) for backend focused instructions.
+See the [backend instructions](./webserver/README.md) for backend focused instructions.
 
 
