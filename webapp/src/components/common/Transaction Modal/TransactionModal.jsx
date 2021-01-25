@@ -8,14 +8,7 @@ import { buttonStyle } from '../../../styles/AppStyles'
 import CloseSvg from '../svg/CloseSvg'
 
 const TransactionModal = ({ closeCallback, data, update }) => {
-  const [newTransaction, setNewTransaction] = useState({
-    user_id: '',
-    description: '',
-    merchant_id: '',
-    debit: false,
-    credit: false,
-    amount: 0
-  })
+  const [newTransaction, setNewTransaction] = useState({})
   const [inputsValid, setInputsValid] = useState(false)
   const [userValid, setUserValid] = useState(false)
   const [merchantValid, setMerchantValid] = useState(false)
@@ -23,6 +16,17 @@ const TransactionModal = ({ closeCallback, data, update }) => {
 
   useEffect(() => {
     setNewTransaction({ ...data })
+    // eslint-disable-next-line camelcase
+    const { amount, user_id, merchant_id } = data
+
+    const amountValid = !isNaN(parseFloat(amount))
+    const userValid = user_id.length > 0
+    const merchantValid = merchant_id.length > 0
+
+    setInputsValid(amountValid && userValid && merchantValid)
+    setUserValid(userValid)
+    setMerchantValid(merchantValid)
+    setAmountValid(amountValid)
   }, [])
 
   const ADD_TRANSACION = gql`
@@ -63,9 +67,7 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
     const userValid = user_id.length > 0
     const merchantValid = merchant_id.length > 0
 
-    if (amountValid && userValid && merchantValid) {
-      setInputsValid(true)
-    }
+    setInputsValid(amountValid && userValid && merchantValid)
 
     setUserValid(userValid)
     setMerchantValid(merchantValid)
@@ -190,7 +192,8 @@ TransactionModal.defaultProps = {
     description: '',
     merchant_id: '',
     debit: false,
-    credit: false
+    credit: false,
+    amount: 0
   },
   update: false
 }
