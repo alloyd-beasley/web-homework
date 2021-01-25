@@ -13,12 +13,14 @@ const Home = () => {
   useEffect(() => {
     const { transactions } = dataContext
     if (transactions.length > 0) {
-      const keys = [...Object.keys(transactions[0])]
+      const keys = [...Object.keys(transactions[0])].filter(k => k !== '__typename')
       const newHeaders = []
 
       for (const k of keys) {
         if (k === 'credit' || k === 'debit') {
           newHeaders.push({ Header: k.toUpperCase(), accessor: d => d[k].toString() })
+        } else if (k === 'amount') {
+          newHeaders.push({ Header: `${k.toUpperCase()} ($)`, accessor: k })
         } else {
           newHeaders.push({ Header: k.toUpperCase(), accessor: k })
         }
