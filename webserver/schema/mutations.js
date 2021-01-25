@@ -42,7 +42,7 @@ const mutation = new GraphQLObjectType({
         const saved = await TransactionModel.findOneAndUpdate({ _id: id }, { user_id, description, merchant_id, debit, credit, amount }, {
           new: true
         })
-
+        saved.id = saved._id
         return saved
       }
     },
