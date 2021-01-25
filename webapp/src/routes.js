@@ -15,11 +15,11 @@ const AppRouter = () => {
   useEffect(() => {
     const { loading, data } = transactions
     if (data && data.transactions) {
-      setDataContext({ transactions: data.transactions, txDataLoading: false })
-    } else if (loading) {
-      setDataContext({ transactions: [], txDataLoading: true })
+      setDataContext({ transactions: data.transactions, txDataLoading: loading })
+    } else {
+      setDataContext({ transactions: [], txDataLoading: loading })
     }
-  }, [transactions.data])
+  }, [transactions.data, transactions.loading])
 
   return (
     <Router>
