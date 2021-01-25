@@ -1,5 +1,3 @@
-# Server Portion
-
 ## Setup
 
 1. Install MongoDB (Community Edition)
@@ -12,4 +10,5 @@
     - The `yarn start` script has been modified to use nodemon.
 
 
-
+### Postman
+A postman collection can be found in webserver/postman. Use this to generate your own collection for testing or exploration.
