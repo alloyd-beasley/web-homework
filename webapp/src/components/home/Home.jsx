@@ -1,37 +1,62 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import Table from '../common/Table/Table'
+import React, { useContext, useEffect, useState } from 'react'
+import { css } from '@emotion/core'
 import { tableContainer } from '../common/Table/TableStyles'
-import { buttonStyle } from '../../styles/AppStyles'
-import { useGetTransactions } from "../../hooks/useGetTransactions"
-
+import { TransactionContext } from '../../TransactionContext'
+import TableMutationColumn from '../common/Table/TableMutationColumn'
+import Table from '../common/Table/Table'
+import Footer from './Footer'
 
 const Home = () => {
-  const [tableData, setTableData] = useState([]);
-  const [headers, setTableHeaders] = useState([]);
-  const { data, loading, error } = useGetTransactions();
+  const [headers, setTableHeaders] = useState([])
 
-
+  const { dataContext } = useContext(TransactionContext)
   useEffect(() => {
-    if (data && data.transactions) {
-      const keys = [...Object.keys(data.transactions[0])];
-      setTableHeaders(keys.filter(k => k !== "__typename"));
-      setTableData(data.transactions);
-    }
-  }, [data])
+    const { transactions } = dataContext
+    if (transactions.length > 0) {
+      const keys = [...Object.keys(transactions[0])]
+      const newHeaders = []
 
+      for (const k of keys) {
+        if (k === 'credit' || k === 'debit') {
+          newHeaders.push({ Header: k.toUpperCase(), accessor: d => d[k].toString() })
+        } else {
+          newHeaders.push({ Header: k.toUpperCase(), accessor: k })
+        }
+      }
+      newHeaders.push({
+        Header: 'Actions',
+        // eslint-disable-next-line react/display-name
+        Cell: data => <TableMutationColumn data={data.row} />
+      })
+      setTableHeaders(newHeaders)
+    }
+  }, [dataContext.transactions])
 
   return (
-    <Fragment>
-      {data == 'loading' && "loading"}
-      <div css={tableContainer}>
-        <Table headers={headers} data={tableData} />
-        <div style={{ display: "flex", width: "100%", justifyContent: "flex-start" }}>
-          <button css={buttonStyle}>
-            Add Transaction
-          </button>
-        </div>
-      </div>
-    </Fragment>
+    <div css={tableContainer}>
+      {dataContext.txDataLoading && (
+        <div css={css`
+            display: flex;
+            justify-content: center;
+            color: whitesmoke;
+            width: 100%;
+            line-height: 50px;
+        `}>...Loading Table Data</div>
+      )}
+      {dataContext.transactions.length > 0 && !dataContext.txDataLoading
+        ? <Table data={dataContext.transactions} headers={headers} />
+        : (
+          <div css={css`
+            display: flex;
+            justify-content: center;
+            color: whitesmoke;
+            width: 100%;
+            line-height: 50px;
+        `}>
+          You have no transaction data to display. Please add a transaction.</div>
+        )}
+      <Footer />
+    </div>
   )
 }
 

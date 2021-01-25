@@ -1,10 +1,10 @@
 import { css } from '@emotion/core'
 
-export const navStyle = css`    
+export const navStyle = css`
   box-shadow: 0px 0px 5px 1px #455a64;
   margin: 8px;
   border-radius: 3px;
-  background: #37474F;  
+  background: #37474F;
   height: 50px;
 
   & ul > li > a {
@@ -14,8 +14,8 @@ export const navStyle = css`
   }
 
   & ul > li > a:hover {
-    color: #FF7043;   
-    transition: color 0.2s; 
+    color: #FF7043;
+    transition: color 0.2s;
   }
 
   & > ul {
@@ -25,9 +25,8 @@ export const navStyle = css`
       list-style-type: none;
       align-items: center;
   }
-  
+
   & > ul > li:not(:first-child) {
     margin-left: 16px;
   }
-
 `

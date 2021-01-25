@@ -3,8 +3,7 @@ const path = require('path')
 const root = process.cwd()
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const dotenv = require('dotenv').config({path: path.join(__dirname, '..', '.env')});
-console.log(dotenv)
+const dotenv = require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
 const outputDirectory = path.join(root, '..', 'webserver', 'public')
 
@@ -17,7 +16,7 @@ let plugins = [
   }),
   new webpack.DefinePlugin({
     'process.env': dotenv.parsed
-  }),
+  })
 ]
 
 const JS_FILE_REGEX = /\.(js|jsx)$/

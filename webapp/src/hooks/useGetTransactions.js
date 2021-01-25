@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client'
 
 export const GET_TRANSACTIONS = gql`
   query {
@@ -12,14 +12,14 @@ export const GET_TRANSACTIONS = gql`
         amount
     }
   }
-`;
+`
 
 export const useGetTransactions = () => {
-  const { loading, error, data } = useQuery(GET_TRANSACTIONS);
-  
+  const { loading, error, data } = useQuery(GET_TRANSACTIONS)
+
   return {
     loading,
     error,
     data
-  };
-};
+  }
+}

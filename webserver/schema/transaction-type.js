@@ -3,7 +3,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLBoolean,
-  GraphQLFloat, 
+  GraphQLFloat,
   GraphQLInputObjectType
 } = graphql
 
@@ -34,6 +34,6 @@ const TransactionInputType = new GraphQLInputObjectType({
 })
 
 module.exports = {
-  TransactionType, 
+  TransactionType,
   TransactionInputType
 }
