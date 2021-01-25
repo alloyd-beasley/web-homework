@@ -16,6 +16,10 @@ const TransactionModal = ({ closeCallback, data, update }) => {
     credit: false,
     amount: 0
   })
+  const [inputsValid, setInputsValid] = useState(false)
+  const [userValid, setUserValid] = useState(false)
+  const [merchantValid, setMerchantValid] = useState(false)
+  const [amountValid, setAmountValid] = useState(false)
 
   useEffect(() => {
     setNewTransaction({ ...data })
@@ -52,6 +56,22 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
   const [addTransaction] = useMutation(ADD_TRANSACION)
   const [editTransaction] = useMutation(EDIT_TRANSACION)
 
+  const handleValidateInputs = () => {
+    // eslint-disable-next-line camelcase
+    const { amount, user_id, merchant_id } = newTransaction
+    const amountValid = !isNaN(parseFloat(amount))
+    const userValid = user_id.length > 0
+    const merchantValid = merchant_id.length > 0
+
+    if (amountValid && userValid && merchantValid) {
+      setInputsValid(true)
+    }
+
+    setUserValid(userValid)
+    setMerchantValid(merchantValid)
+    setAmountValid(amountValid)
+  }
+
   const handleInputUpdateNewTransaction = (event) => {
     if (event.target.name === 'amount') {
       newTransaction[event.target.name] = parseFloat(event.target.value)
@@ -59,6 +79,7 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
       newTransaction[event.target.name] = event.target.value
     }
 
+    handleValidateInputs()
     setNewTransaction(newTransaction)
   }
 
@@ -111,7 +132,7 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
       </div>
       <TransactionModalBox>
         <div css={transactionModalInputContainer}>
-          <div>user_id</div>
+          user_id
           <input
             css={transactionModalInput}
             defaultValue={newTransaction['user_id']}
@@ -119,8 +140,10 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
             onChange={(e) => handleInputUpdateNewTransaction(e)}
             type='text' />
         </div>
+        {!userValid && <span css={css`font-size: 11px; color: #e53935;`}>*The transaction must have a user_id.</span>}
         <div css={transactionModalInputContainer}>
           description
+
           <input
             css={transactionModalInput}
             defaultValue={newTransaction['description']}
@@ -128,6 +151,16 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
             onChange={(e) => handleInputUpdateNewTransaction(e)}
             type='text' />
         </div>
+        <div css={transactionModalInputContainer}>
+          merchant_id
+          <input
+            css={transactionModalInput}
+            defaultValue={newTransaction['merchant_id']}
+            name='merchant_id'
+            onChange={(e) => handleInputUpdateNewTransaction(e)}
+            type='text' />
+        </div>
+        {!merchantValid && <span css={css`font-size: 11px; color: #e53935;`}>*The transaction must have a merchant_id.</span>}
         <div css={transactionModalInputContainer}>
           Transaction Type
           <select defaultValue={getSelectorDefaultValue()} onBlur={(e) => handleSelectUpdateNewTransaction(e)}>
@@ -144,7 +177,8 @@ mutation editTransactionById ($id: String, $user_id: String, $description: Strin
             onChange={(e) => handleInputUpdateNewTransaction(e)}
             type='number' />
         </div>
-        <button css={buttonStyle} onClick={handleNewTransaction}>Add Transaction</button>
+        {!amountValid && <span css={css`font-size: 11px; color: #e53935;`}>*Amount must be a valid number.</span>}
+        <button css={buttonStyle} disabled={!inputsValid} onClick={handleNewTransaction}>Add Transaction</button>
       </TransactionModalBox>
     </TransactionModalContainer>
   )

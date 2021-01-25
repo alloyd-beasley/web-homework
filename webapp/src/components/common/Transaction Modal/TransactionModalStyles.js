@@ -23,8 +23,9 @@ export const TransactionModalBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;    
-    padding: 8px;
+    padding: 22px;
     color: whitesmoke;
+    border-radius: 3px;
 `
 
 export const transactionModalInputContainer = css`
@@ -33,6 +34,13 @@ export const transactionModalInputContainer = css`
     justify-content: space-between;
     align-items: center;    
 `
+export const transactionModalInputContainerContent = css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+`
+
 export const transactionModalInput = css`
     border-radius: 3px;
     outline: none;

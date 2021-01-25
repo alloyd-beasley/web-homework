@@ -22,6 +22,11 @@ export const buttonStyle = css`
   border-radius: 3px;
   cursor: pointer;
   outline: none;
+
+  &:disabled{
+    cursor: not-allowed;
+    background: #FFCCBC
+  }
 `
 export const flatButtonStyle = css`
     background: none;    
