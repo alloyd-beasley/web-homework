@@ -19,7 +19,7 @@ toJson().fromFile(path.join(__dirname, '/transactions.csv')).then(tx => {
   }
 
   seeder.connect(MONGO_URI, () => {
-    seeder.loadModels([path.join(__dirname, '..//data-models/Transaction.js')])
+    seeder.loadModels([path.join(__dirname, '../data-models/Transaction.js')])
 
     seeder.clearModels(['transaction'], function () {
       seeder.populateModels(data, function () { seeder.disconnect() })

@@ -23,12 +23,7 @@ const Footer = () => {
             width='20'
           />
         </button>
-        {displayActions && (
-        <>
-          <button css={flatButtonStyle} onClick={handleRenderTransactionModal}>Add Transaction</button>
-          <button css={flatButtonStyle}>Add Bulk Transactions</button>
-        </>
-        )}
+        {displayActions && <button css={flatButtonStyle} onClick={handleRenderTransactionModal}>Add Transaction</button>}
       </TableFooter>
       {displayTxModal && <TransactionModal closeCallback={setDisplayTxModal} />}
     </>
