@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
-import { buttonStyle } from '../../../styles/AppStyles'
+import { flatButtonStyle } from '../../../styles/AppStyles'
 import { gql, useMutation } from '@apollo/client'
 import { TransactionContext } from '../../../TransactionContext'
 import TransactionModal from '../Transaction Modal/TransactionModal'
@@ -40,8 +40,8 @@ const TableMutationColumn = ({ data }) => {
 
   return (
     <>
-      <button css={buttonStyle} onClick={handleEditTransaction}>edit</button>
-      <button css={buttonStyle} onClick={handleRemoveTransaction}>remove</button>
+      <button css={flatButtonStyle} onClick={handleEditTransaction}>edit</button>
+      <button css={flatButtonStyle} onClick={handleRemoveTransaction}>remove</button>
       {displayTxModal && <TransactionModal closeCallback={setDisplayTxModal} data={data.original} update />}
     </>
   )

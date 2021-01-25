@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { buttonStyle, flatButtonStyle } from '../../styles/AppStyles'
+import { buttonStyle } from '../../styles/AppStyles'
 import { TableFooter } from '../common/Table/TableStyles'
-import UploadSvg from '../common/svg/UploadSvg.jsx'
 import TransactionModal from '../common/Transaction Modal/TransactionModal'
 
 const Footer = () => {
   const [displayTxModal, setDisplayTxModal] = useState(false)
-  const [displayActions, setDisplayActions] = useState(false)
 
   const handleRenderTransactionModal = () => {
     setDisplayTxModal(true)
@@ -17,13 +15,9 @@ const Footer = () => {
       <TableFooter>
         <button
           css={buttonStyle}
-          onClick={() => setDisplayActions(true)}>
-          <UploadSvg
-            height='20'
-            width='20'
-          />
+          onClick={() => handleRenderTransactionModal(true)}>
+          Add Transaction
         </button>
-        {displayActions && <button css={flatButtonStyle} onClick={handleRenderTransactionModal}>Add Transaction</button>}
       </TableFooter>
       {displayTxModal && <TransactionModal closeCallback={setDisplayTxModal} />}
     </>
