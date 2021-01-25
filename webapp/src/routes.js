@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { contentStyle, layoutStyle } from './styles/AppStyles'
 import { TransactionContext } from './TransactionContext'
 import { useGetTransactions } from './hooks/useGetTransactions'
-import Home from './components/Home'
-import Nav from './components/Nav'
+import Home from './components/Home/Home'
+import Nav from './components/Nav/Nav'
 
 const AppRouter = () => {
   const [dataContext, setDataContext] = useState({ transactions: [], txDataLoading: false })

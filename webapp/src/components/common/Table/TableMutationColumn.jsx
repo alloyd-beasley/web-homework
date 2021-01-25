@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
-import { buttonStyle } from '../styles/AppStyles'
+import { buttonStyle } from '../../../styles/AppStyles'
 import { gql, useMutation } from '@apollo/client'
-import { TransactionContext } from '../TransactionContext'
-import TransactionModal from './TransactionModal'
+import { TransactionContext } from '../../../TransactionContext'
+import TransactionModal from '../Transaction Modal/TransactionModal'
 
 const TableMutationColumn = ({ data }) => {
   const REMOVE_TRANSACTION = gql`

@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
-import { TransactionContext } from '../TransactionContext'
+import { TransactionContext } from '../../../TransactionContext'
 import { gql, useMutation } from '@apollo/client'
-import { TransactionModalContainer, TransactionModalBox, transactionModalInputContainer, transactionModalInput } from './styles/TransactionModalStyles'
-import { buttonStyle } from '../styles/AppStyles'
-import CloseSvg from './CloseSvg'
+import { TransactionModalContainer, TransactionModalBox, transactionModalInputContainer, transactionModalInput } from './TransactionModalStyles'
+import { buttonStyle } from '../../../styles/AppStyles'
+import CloseSvg from '../svg/CloseSvg'
 
 const TransactionModal = ({ closeCallback, data, update }) => {
   const [newTransaction, setNewTransaction] = useState({

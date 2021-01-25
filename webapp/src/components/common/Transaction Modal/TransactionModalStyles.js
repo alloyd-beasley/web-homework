@@ -39,4 +39,4 @@ export const transactionModalInput = css`
     border: none;
     height: 21px;
     box-shadow: inset 0px 0px 3px 0px #37474f;
-`
+    `

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { buttonStyle, flatButtonStyle } from '../../../styles/AppStyles'
-import { TableFooter } from './TableStyles'
-import UploadSvg from '../UploadSvg.jsx'
-import TransactionModal from '../TransactionModal'
+import { buttonStyle, flatButtonStyle } from '../../styles/AppStyles'
+import { TableFooter } from '../common/Table/TableStyles'
+import UploadSvg from '../common/svg/UploadSvg.jsx'
+import TransactionModal from '../common/Transaction Modal/TransactionModal'
 
-const Footer = ({ addTransaction }) => {
+const Footer = () => {
   const [displayTxModal, setDisplayTxModal] = useState(false)
   const [displayActions, setDisplayActions] = useState(false)
 
@@ -34,10 +33,6 @@ const Footer = ({ addTransaction }) => {
       {displayTxModal && <TransactionModal closeCallback={setDisplayTxModal} />}
     </>
   )
-}
-
-Footer.propTypes = {
-  addTransaction: PropTypes.func
 }
 
 export default Footer

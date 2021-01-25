@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Table from '../common/Table/Table'
-import Footer from '../common/Table/Footer'
 import { css } from '@emotion/core'
 import { tableContainer } from '../common/Table/TableStyles'
 import { TransactionContext } from '../../TransactionContext'
+import TableMutationColumn from '../common/Table/TableMutationColumn'
+import Table from '../common/Table/Table'
+import Footer from './Footer'
 
 const Home = () => {
   const [headers, setTableHeaders] = useState([])
@@ -12,11 +13,24 @@ const Home = () => {
   useEffect(() => {
     const { transactions } = dataContext
     if (transactions.length > 0) {
-      const keys = [...Object.keys(transactions[0])].map(k => ({ Header: k, accessor: k }))
+      const keys = [...Object.keys(transactions[0])]
+      const newHeaders = []
 
-      setTableHeaders(keys)
+      for (const k of keys) {
+        if (k === 'credit' || k === 'debit') {
+          newHeaders.push({ Header: k.toUpperCase(), accessor: d => d[k].toString() })
+        } else {
+          newHeaders.push({ Header: k.toUpperCase(), accessor: k })
+        }
+      }
+      newHeaders.push({
+        Header: 'Actions',
+        // eslint-disable-next-line react/display-name
+        Cell: data => <TableMutationColumn data={data.row} />
+      })
+      setTableHeaders(newHeaders)
     }
-  }, [dataContext])
+  }, [dataContext.transactions])
 
   return (
     <div css={tableContainer}>
